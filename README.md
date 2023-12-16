@@ -21,7 +21,7 @@ Email in the [CV](/CV_Kutay.pdf).
 [2023day05](/2023AoC/23day05.js)
 [2023day04](/2023AoC/23day04.js)
 [2023day03](/2023AoC/23day03.js)
-[2023day02](/2023AoC/23day02.js)
+[2023day02](/2023AoC/23day02.js) Regex parsing
 [2023day01](/2023AoC/23day01.js) First occuring substring    
      
 
