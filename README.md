@@ -1,26 +1,26 @@
 # AboutMe
-40 years-old Electrical Engineer, currently unemployed, residing in Turkey. Open for job/project offers, recommendations. Main area of interest; futuristic digital democracies, and meritocracy based voting schemes. Email in the CV.
+40 years-old Electrical Engineer, currently unemployed, residing in Turkey. Open for job/project offers, recommendations. Main area of interest; futuristic digital democracies, and meritocracy based voting schemes. Email in the [CV](/CV_Kutay.pdf).
 
 
 # Advent of Code 2023 December
-[2023day18](/2023AoC/23day18.js)    
-[2023day17](/2023AoC/23day17.js)    
-[2023day16](/2023AoC/23day16.js)    BFS; Edge Cases 
-[2023day15](/2023AoC/23day15.js)    Hashsum 
-[2023day14](/2023AoC/23day14.js)    Roll game; Modular flop 
-[2023day13](/2023AoC/23day13.js)    
-[2023day12](/2023AoC/23day12.js)    
-[2023day11](/2023AoC/23day11.js)    
-[2023day10](/2023AoC/23day10.js)    
-[2023day09](/2023AoC/23day09.js)    
-[2023day08](/2023AoC/23day08.js)    
-[2023day07](/2023AoC/23day07.js)    
-[2023day06](/2023AoC/23day06.js)    
-[2023day05](/2023AoC/23day05.js)    
-[2023day04](/2023AoC/23day04.js)    
-[2023day03](/2023AoC/23day03.js)    
-[2023day02](/2023AoC/23day02.js)    
-[2023day01](/2023AoC/23day01.js)    First occuring substring    
+[2023day18](/2023AoC/23day18.js):    
+[2023day17](/2023AoC/23day17.js):    
+[2023day16](/2023AoC/23day16.js): BFS; Edge Cases 
+[2023day15](/2023AoC/23day15.js): Hashsum 
+[2023day14](/2023AoC/23day14.js): Roll game; Modular flop 
+[2023day13](/2023AoC/23day13.js):    
+[2023day12](/2023AoC/23day12.js):    
+[2023day11](/2023AoC/23day11.js):    
+[2023day10](/2023AoC/23day10.js):    
+[2023day09](/2023AoC/23day09.js):    
+[2023day08](/2023AoC/23day08.js):    
+[2023day07](/2023AoC/23day07.js):    
+[2023day06](/2023AoC/23day06.js):    
+[2023day05](/2023AoC/23day05.js):    
+[2023day04](/2023AoC/23day04.js):    
+[2023day03](/2023AoC/23day03.js):    
+[2023day02](/2023AoC/23day02.js):    
+[2023day01](/2023AoC/23day01.js): First occuring substring    
      
 
 # Advent of Code 2022 December
