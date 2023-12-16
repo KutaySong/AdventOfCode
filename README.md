@@ -1,5 +1,6 @@
 # AboutMe
 40 years-old Electrical Engineer, currently unemployed, residing in Turkey. Open for job/project offers, recommendations. Main area of interest; futuristic digital democracies, and meritocracy based voting schemes. 
+
 Email in the [CV](/CV_Kutay.pdf).
 
 
