@@ -31,23 +31,51 @@ const p2 = ()=> {
     let db = {}
     lines1.map(e=>(a = e.split('{'), db[a[0]] = a[1].slice(0,-1)))
     let possib = []
-    function getConditions(str, conditions = []) {
-        let [fi, rest] = str.split(',',2)
-        if (fi.includes(':')) {
-            let [c, cnuf] = fi.split(':',2)
-            if (cnuf[0] == 'A') possib.push([...conditions, c])
-            else if (cnuf[0] != 'R') {
-                getConditions(db[cnuf], [...conditions, c])
-                if (rest)
-                getConditions(rest, [...conditions, '!'+c])
-            }
+
+    function getConditions(str, pool = {x:[1,4000],m:[1,4000],a:[1,4000],s:[1,4000]}) {
+        if (!str.includes(',')) {
+            if (str[0] == 'A') return possib.push(JSON.parse(JSON.stringify(pool)))
+            if (str[0] == 'R') return
+            getConditions(db[str], pool)
         } else {
-            getConditions(db[fi], conditions)
+            const indColon = str.indexOf(':');
+            let [beforeColon, afterColon] = [str.slice(0,indColon), str.slice(indColon+1)]
+            const indComma = afterColon.indexOf(',');
+            let [beforeComma, afterComma] = [afterColon.slice(0,indComma), afterColon.slice(indComma+1)]
+            //  beforeColon(c) ? beforeComma : afterComma
+            getConditions(beforeComma, tweak(pool, beforeColon))
+            getConditions( afterComma, rweak(pool, beforeColon))
         }
     }
     getConditions(db.in)
-    console.log(possib,"possib")
+    // count all conditions by multiplying all intervals for x,m,a,s
+    return possib.map(e=>{
+        if (!e.x || !e.m || !e.a || !e.s) return 0
+        else return (e.x[1]-e.x[0]+1) * (e.m[1]-e.m[0]+1) * (e.a[1]-e.a[0]+1) * (e.s[1]-e.s[0]+1)
+    }).reduce((a,b)=>a+b)
+    // !!?  possibilities intersect each other
+    
 }
 
 console.log("p1:",p1(),'(383682)')
 console.log("p2:",p2(),'(?)')
+
+
+function tweak (pool, cond) { // x>2662
+    let interval = pool[cond[0]]
+    if (!interval) return
+    if (cond[1]=='>') interval[0] = Math.max(interval[0], +cond.slice(2)+1)
+    if (cond[1]=='<') interval[1] = Math.min(interval[1], +cond.slice(2)-1)
+    if (interval[0] > interval[1]) interval = null
+    pool[cond[0]] = interval
+    return pool
+}
+function rweak (pool, cond) { // reverse tweak
+    let interval = pool[cond[0]]
+    if (!interval) return
+    if (cond[1]=='>') interval[1] = Math.min(interval[1], +cond.slice(2)-1)
+    if (cond[1]=='<') interval[0] = Math.max(interval[0], +cond.slice(2)+1)
+    if (interval[0] > interval[1]) interval = null
+    pool[cond[0]] = interval
+    return pool
+}
