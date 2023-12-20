@@ -1,16 +1,16 @@
 # AboutMe
-40 years-old Electrical Engineer, currently unemployed, residing in Turkey. Open for job/project offers, recommendations. Main area of interest; futuristic digital democracies, and meritocracy based voting schemes. 
-
-Email in the [CV](/CV_Kutay.pdf).
+39 years-old Electrical Engineer, IT specialist, residing in Turkey, currently unemployed. Open to suggestions. [Email](/CV_Kutay.pdf).
 
 
 # Advent of Code 2023 December
+[2023day20](/2023AoC/23day20.js)
+[2023day19](/2023AoC/23day19.js) Db filtering; 
 [2023day18](/2023AoC/23day18.js)
-[2023day17](/2023AoC/23day17.js)
+[2023day17](/2023AoC/23day17.js) Djkstra 3step;
 [2023day16](/2023AoC/23day16.js) BFS; Edge Cases 
 [2023day15](/2023AoC/23day15.js) Hashsum 
 [2023day14](/2023AoC/23day14.js) Roll game; Modular flop 
-[2023day13](/2023AoC/23day13.js)
+[2023day13](/2023AoC/23day13.js) Dedect symmetry
 [2023day12](/2023AoC/23day12.js)
 [2023day11](/2023AoC/23day11.js)
 [2023day10](/2023AoC/23day10.js)
