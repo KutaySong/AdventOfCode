@@ -1,6 +1,6 @@
 // https://adventofcode.com/2023/day/19
 
-let [lines1, lines2] = require('fs').readFileSync('./IO/19t.txt','utf8').split(/\r?\n\r?\n/).map(e=>e.split(/\r?\n/))
+let [lines1, lines2] = require('fs').readFileSync('./IO/19v.txt','utf8').split(/\r?\n\r?\n/).map(e=>e.split(/\r?\n/))
 
 const p1 = ()=> {
     let db = {}
@@ -33,6 +33,7 @@ const p2 = ()=> {
     let possib = []
 
     function getConditions(str, pool = {x:[1,4000],m:[1,4000],a:[1,4000],s:[1,4000]}) {
+        if (!pool) return
         if (!str.includes(',')) {
             if (str[0] == 'A') return possib.push(JSON.parse(JSON.stringify(pool)))
             if (str[0] == 'R') return
@@ -44,38 +45,28 @@ const p2 = ()=> {
             let [beforeComma, afterComma] = [afterColon.slice(0,indComma), afterColon.slice(indComma+1)]
             //  beforeColon(c) ? beforeComma : afterComma
             getConditions(beforeComma, tweak(pool, beforeColon))
-            getConditions( afterComma, rweak(pool, beforeColon))
+            getConditions( afterComma, tweak(pool, beforeColon, true))
         }
     }
-    getConditions(db.in)
-    // count all conditions by multiplying all intervals for x,m,a,s
-    return possib.map(e=>{
-        if (!e.x || !e.m || !e.a || !e.s) return 0
-        else return (e.x[1]-e.x[0]+1) * (e.m[1]-e.m[0]+1) * (e.a[1]-e.a[0]+1) * (e.s[1]-e.s[0]+1)
-    }).reduce((a,b)=>a+b)
-    // !!?  possibilities intersect each other
+    function tweak (pool, cond, rev= false) { // x>2662
+        const clone = JSON.parse(JSON.stringify(pool))
+        let interval = clone[cond[0]]
+        if (!interval) return
+        if (rev) {
+            if (cond[1]=='>') interval[1] = Math.min(interval[1], +cond.slice(2))
+            if (cond[1]=='<') interval[0] = Math.max(interval[0], +cond.slice(2))
+        } else {
+            if (cond[1]=='>') interval[0] = Math.max(interval[0], +cond.slice(2)+1)
+            if (cond[1]=='<') interval[1] = Math.min(interval[1], +cond.slice(2)-1)
+        }
+        if (interval[0] > interval[1]) interval = null
+        clone[cond[0]] = interval
+        return clone
+    }
     
+    getConditions(db.in)
+    return possib.map(e=>(e.x[1]-e.x[0]+1)*(e.m[1]-e.m[0]+1)*(e.a[1]-e.a[0]+1)*(e.s[1]-e.s[0]+1)).reduce((a,b)=>a+b)
 }
 
 console.log("p1:",p1(),'(383682)')
-console.log("p2:",p2(),'(?)')
-
-
-function tweak (pool, cond) { // x>2662
-    let interval = pool[cond[0]]
-    if (!interval) return
-    if (cond[1]=='>') interval[0] = Math.max(interval[0], +cond.slice(2)+1)
-    if (cond[1]=='<') interval[1] = Math.min(interval[1], +cond.slice(2)-1)
-    if (interval[0] > interval[1]) interval = null
-    pool[cond[0]] = interval
-    return pool
-}
-function rweak (pool, cond) { // reverse tweak
-    let interval = pool[cond[0]]
-    if (!interval) return
-    if (cond[1]=='>') interval[1] = Math.min(interval[1], +cond.slice(2)-1)
-    if (cond[1]=='<') interval[0] = Math.max(interval[0], +cond.slice(2)+1)
-    if (interval[0] > interval[1]) interval = null
-    pool[cond[0]] = interval
-    return pool
-}
+console.log("p2:",p2(),'(117954800808317)')
